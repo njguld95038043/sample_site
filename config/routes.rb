@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'deliveries/index'
+  get 'deliveries/edit'
   get 'homes/top'
   devise_for :users
   root to: 'homes#top'

@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'items/show'
+  get 'items/index'
+  get 'genres/index'
   get 'deliveries/index'
   get 'deliveries/edit'
   get 'homes/top'

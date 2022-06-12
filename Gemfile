@@ -59,3 +59,4 @@ gem 'dotenv-rails'
 gem 'kaminari', '~> 1.2.1'
 gem 'rubocop-airbnb'
 gem 'whenever', require: false
+gem 'rails-i18n'

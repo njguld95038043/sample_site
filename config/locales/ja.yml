@@ -1,5 +1,10 @@
  ja:
     enums:
+      user:
+        gender:
+          man: "男性"
+          woman: "女性"
+          other: "その他"
       order:
         payment_method:
           credit_card: "クレジットカード"
@@ -17,3 +22,10 @@
           waiting_production: "製作待ち"
           in_production: "製作中"
           complete_production: "製作完了"
+    views:
+    pagination:
+      previous: "« 前ページ"
+      next: "次ページ »"
+      first: "最初のページ"
+      last: "最後のページ"
+      truncate: "..."

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'order_details/new'
+  get 'order_details/show'
+  get 'order_details/edit'
+  get 'order_details/index'
   get 'chats/new'
   get 'chats/edit'
   get 'chats/show'

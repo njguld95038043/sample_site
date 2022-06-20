@@ -89,3 +89,42 @@
     </div>
   </div>
 </div>
+
+
+<h1><%= @post.title %></h1>
+<p><%= @post.body %></p>
+
+<%= form_with model: @comment, local: true , url: comments_path do |f| %>
+    <%= f.text_area :content %><br>
+    <%= f.hidden_field :post_id, value: @post.id %>
+    <div class="field" id="star">
+        <%= f.label :rate,  "星評価 (※必須)" ,id: "e"%>
+        <%= f.hidden_field :rate, id: :review_star %>
+    </div>
+    <script>
+        $('#star').raty({
+            size     : 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            scoreName: 'comment[rate]',
+        });
+    </script>
+    <%= f.submit %>
+<% end %>
+
+<% @comments.each do |comment| %>
+    <p><%= comment.content %></p>
+    <h4 class="mb-3">評価：<%= comment.rate %>点 </h4>
+    <div id="star-rate-<%= comment.id %>"></div>
+    <script>
+          $('#star-rate-<%= comment.id %>').raty({
+            size: 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            score: <%= comment.rate %>,
+        });
+    </script>
+<% end %>

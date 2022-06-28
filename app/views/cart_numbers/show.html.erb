@@ -1,2 +1,39 @@
-<h1>CartNumbers#show</h1>
-<p>Find me in app/views/cart_numbers/show.html.erb</p>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-2">
+      <div class="card">
+        <div class="card-header">
+          ジャンル検索
+        </div>
+        <div class="card-body">
+          <% @genre.each do |genre| %>
+           <p class="card-text"><%= genre.name%></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <div class="col-9">
+    <div>
+      <h1 class="my-3"><strong>商品一覧</strong><span class="count">（全<%= @itemscount.count %>件）</span></h1>
+    </div>
+    <div class="item-lists">
+     <% @items.shuffle.first(8).each do |item| %>
+      <div class="card mr-4 mb-4" style="width: 10rem;">
+        <%= link_to item_path(item) do %>
+         <%= attachment_image_tag item, :image, format: "jpg", size:'158x158', class: "card-image-top"%>
+        <div class="card-body">
+         <p class="card-text text-truncate text-dark"><%= item.name %></p>
+         <p class="card-text text-dark">¥<%= item.with_tax_price.to_s(:delimited, delimiter: ',') %>(税込)</p>
+        </div>
+        <% end %>
+      </div>
+     <% end %>
+    </div>
+  </div>
+ </div>
+</div>
+<div class="row justify-content-center">
+  <div>
+   <%= paginate @items %>
+  </div>
+</div>
